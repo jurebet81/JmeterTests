@@ -79,6 +79,28 @@
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
         <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="PrepareDates" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">log.info(&quot;Preparing dates&quot;);
+log.info(vars.get(&quot;testv&quot;));
+
+String today = &quot;${__time(MM-dd-yyyy)}&quot;;
+String todayPlus2 = &quot;${__timeShift(MM-dd-yyyy,,P2D,,)}&quot;;
+
+vars.put(&quot;today&quot;, today);
+vars.put(&quot;todayPlus2&quot;, todayPlus2);
+
+String month = today.substring(0,2);
+String day = today.substring(3,5);
+String year = today.substring(6,10);
+
+vars.put(&quot;month&quot;, month);
+vars.put(&quot;day&quot;, day);
+vars.put(&quot;year&quot;, year);</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="New_property-sub-types" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -97,28 +119,7 @@
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree>
-            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="PrepareDates" enabled="true">
-              <boolProp name="resetInterpreter">false</boolProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="script">log.info(&quot;Preparing dates&quot;);
-String today = &quot;${__time(MM-dd-yyyy)}&quot;;
-String todayPlus2 = &quot;${__timeShift(MM-dd-yyyy,,P2D,,)}&quot;;
-
-vars.put(&quot;today&quot;, today);
-vars.put(&quot;todayPlus2&quot;, todayPlus2);
-
-String month = today.substring(0,2);
-String day = today.substring(3,5);
-String year = today.substring(6,10);
-
-vars.put(&quot;month&quot;, month);
-vars.put(&quot;day&quot;, day);
-vars.put(&quot;year&quot;, year);</stringProp>
-            </BeanShellPreProcessor>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="New_agent-offices" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -958,8 +959,8 @@ vars.put(&quot;year&quot;, year);</stringProp>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Propos_UploadDisplayMain" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="C:\Users\julian.restrepob\Pictures\AutoIMG1.jpg" elementType="HTTPFileArg">
-                    <stringProp name="File.path">C:\Users\julian.restrepob\Pictures\AutoIMG1.jpg</stringProp>
+                  <elementProp name="\Pictures\AutoIMG1.jpg" elementType="HTTPFileArg">
+                    <stringProp name="File.path">\Pictures\AutoIMG1.jpg</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                     <stringProp name="File.mimetype">image/jpeg</stringProp>
                   </elementProp>
@@ -997,8 +998,8 @@ vars.put(&quot;year&quot;, year);</stringProp>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Propos_UploadDisplay2" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="C:\Users\julian.restrepob\Pictures\AutoIMG2.jpg" elementType="HTTPFileArg">
-                    <stringProp name="File.path">C:\Users\julian.restrepob\Pictures\AutoIMG2.jpg</stringProp>
+                  <elementProp name="\AutoIMG2.jpg" elementType="HTTPFileArg">
+                    <stringProp name="File.path">\AutoIMG2.jpg</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                     <stringProp name="File.mimetype">image/jpeg</stringProp>
                   </elementProp>
@@ -1996,8 +1997,8 @@ vars.put(&quot;year&quot;, year);</stringProp>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Listing_UploadOffMemoDoc" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="C:\Users\julian.restrepob\Documents\offeringMemorandum.docm.pdf" elementType="HTTPFileArg">
-                    <stringProp name="File.path">C:\Users\julian.restrepob\Documents\offeringMemorandum.docm.pdf</stringProp>
+                  <elementProp name="\offeringMemorandum.docm.pdf" elementType="HTTPFileArg">
+                    <stringProp name="File.path">\offeringMemorandum.docm.pdf</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                     <stringProp name="File.mimetype">application/pdf</stringProp>
                   </elementProp>
@@ -2035,8 +2036,8 @@ vars.put(&quot;year&quot;, year);</stringProp>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Listing_UploadRepAgreement" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="C:\Users\julian.restrepob\Documents\Completed listing docs.pdf" elementType="HTTPFileArg">
-                    <stringProp name="File.path">C:\Users\julian.restrepob\Documents\Completed listing docs.pdf</stringProp>
+                  <elementProp name="\Completed listing docs.pdf" elementType="HTTPFileArg">
+                    <stringProp name="File.path">\Completed listing docs.pdf</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                     <stringProp name="File.mimetype">application/pdf</stringProp>
                   </elementProp>
@@ -2074,8 +2075,8 @@ vars.put(&quot;year&quot;, year);</stringProp>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Listing_UploadRepAgreement(staff)" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="C:\Users\julian.restrepob\Documents\Add FIle 1.pdf" elementType="HTTPFileArg">
-                    <stringProp name="File.path">C:\Users\julian.restrepob\Documents\Add FIle 1.pdf</stringProp>
+                  <elementProp name="\Documents\Add FIle 1.pdf" elementType="HTTPFileArg">
+                    <stringProp name="File.path">\Documents\Add FIle 1.pdf</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                     <stringProp name="File.mimetype">application/pdf</stringProp>
                   </elementProp>
@@ -2113,8 +2114,8 @@ vars.put(&quot;year&quot;, year);</stringProp>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Listing_UploadAucAgreement" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="C:\Users\julian.restrepob\Documents\Auction Agreeemtn new document.pdf" elementType="HTTPFileArg">
-                    <stringProp name="File.path">C:\Users\julian.restrepob\Documents\Auction Agreeemtn new document.pdf</stringProp>
+                  <elementProp name="\Auction Agreeemtn new document.pdf" elementType="HTTPFileArg">
+                    <stringProp name="File.path">\Auction Agreeemtn new document.pdf</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                     <stringProp name="File.mimetype">application/pdf</stringProp>
                   </elementProp>
@@ -2152,8 +2153,8 @@ vars.put(&quot;year&quot;, year);</stringProp>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Listing_UploadAdditionalFile" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="C:\Users\julian.restrepob\Documents\Add FIle 2 - Copy.pdf" elementType="HTTPFileArg">
-                    <stringProp name="File.path">C:\Users\julian.restrepob\Documents\Add FIle 2 - Copy.pdf</stringProp>
+                  <elementProp name="\Add FIle 2 - Copy.pdf" elementType="HTTPFileArg">
+                    <stringProp name="File.path">\Add FIle 2 - Copy.pdf</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                     <stringProp name="File.mimetype">application/pdf</stringProp>
                   </elementProp>
@@ -3584,8 +3585,8 @@ vars.put(&quot;year&quot;, year);</stringProp>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="UC_UploadPurchaseSaleAgree" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="C:\Users\julian.restrepob\Documents\Purchase Agreement Doc.pdf" elementType="HTTPFileArg">
-                    <stringProp name="File.path">C:\Users\julian.restrepob\Documents\Purchase Agreement Doc.pdf</stringProp>
+                  <elementProp name="\Purchase Agreement Doc.pdf" elementType="HTTPFileArg">
+                    <stringProp name="File.path">\Purchase Agreement Doc.pdf</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                     <stringProp name="File.mimetype">application/pdf</stringProp>
                   </elementProp>
@@ -6635,7 +6636,7 @@ vars.put(&quot;year&quot;, year);</stringProp>
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
