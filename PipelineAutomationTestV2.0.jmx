@@ -58,26 +58,6 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="PrepareDates" enabled="true">
-        <boolProp name="resetInterpreter">false</boolProp>
-        <stringProp name="parameters"></stringProp>
-        <stringProp name="filename"></stringProp>
-        <stringProp name="script">log.info (&quot;Preparing dates&quot;);
-String today = &quot;${__time(MM-dd-yyyy)}&quot;;
-String todayPlus2 = &quot;${__timeShift(MM-dd-yyyy,,P2D,,)}&quot;;
-
-vars.put(&quot;today&quot;, today);
-vars.put(&quot;todayPlus2&quot;, todayPlus2);
-
-String month = today.substring(0,2);
-String day = today.substring(3,5);
-String year = today.substring(6,10);
-
-vars.put(&quot;month&quot;, month);
-vars.put(&quot;day&quot;, day);
-vars.put(&quot;year&quot;, year);</stringProp>
-      </BeanShellPreProcessor>
-      <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Mnet Launch" enabled="true">
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -117,7 +97,28 @@ vars.put(&quot;year&quot;, year);</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree/>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="PrepareDates" enabled="true">
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">log.info(&quot;Preparing dates&quot;);
+String today = &quot;${__time(MM-dd-yyyy)}&quot;;
+String todayPlus2 = &quot;${__timeShift(MM-dd-yyyy,,P2D,,)}&quot;;
+
+vars.put(&quot;today&quot;, today);
+vars.put(&quot;todayPlus2&quot;, todayPlus2);
+
+String month = today.substring(0,2);
+String day = today.substring(3,5);
+String year = today.substring(6,10);
+
+vars.put(&quot;month&quot;, month);
+vars.put(&quot;day&quot;, day);
+vars.put(&quot;year&quot;, year);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+          </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="New_agent-offices" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -6623,7 +6624,7 @@ vars.put(&quot;year&quot;, year);</stringProp>
         </hashTree>
       </hashTree>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-        <stringProp name="filename">\Pipeline.csv</stringProp>
+        <stringProp name="filename">/Pipeline.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames">address1,locality,postalCode,areaLevel2,latitude,longitude</stringProp>
         <boolProp name="ignoreFirstLine">false</boolProp>
@@ -6634,44 +6635,7 @@ vars.put(&quot;year&quot;, year);</stringProp>
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results Fail" enabled="false">
-        <boolProp name="ResultCollector.error_logging">true</boolProp>
-        <objProp>
-          <name>saveConfig</name>
-          <value class="SampleSaveConfiguration">
-            <time>true</time>
-            <latency>true</latency>
-            <timestamp>true</timestamp>
-            <success>true</success>
-            <label>true</label>
-            <code>true</code>
-            <message>true</message>
-            <threadName>true</threadName>
-            <dataType>true</dataType>
-            <encoding>false</encoding>
-            <assertions>true</assertions>
-            <subresults>true</subresults>
-            <responseData>false</responseData>
-            <samplerData>false</samplerData>
-            <xml>false</xml>
-            <fieldNames>true</fieldNames>
-            <responseHeaders>false</responseHeaders>
-            <requestHeaders>false</requestHeaders>
-            <responseDataOnError>false</responseDataOnError>
-            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-            <assertionsResultsToSave>0</assertionsResultsToSave>
-            <bytes>true</bytes>
-            <sentBytes>true</sentBytes>
-            <url>true</url>
-            <threadCounts>true</threadCounts>
-            <idleTime>true</idleTime>
-            <connectTime>true</connectTime>
-          </value>
-        </objProp>
-        <stringProp name="filename">C:\JR\Perficient\Jmeter Projects\M&amp;M\testFail</stringProp>
-      </ResultCollector>
-      <hashTree/>
-      <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results Success" enabled="false">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -6703,71 +6667,6 @@ vars.put(&quot;year&quot;, year);</stringProp>
             <threadCounts>true</threadCounts>
             <idleTime>true</idleTime>
             <connectTime>true</connectTime>
-          </value>
-        </objProp>
-        <stringProp name="filename">C:\JR\Perficient\Jmeter Projects\M&amp;M\testSuccess</stringProp>
-        <boolProp name="ResultCollector.success_only_logging">true</boolProp>
-      </ResultCollector>
-      <hashTree/>
-      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="false">
-        <boolProp name="ResultCollector.error_logging">false</boolProp>
-        <objProp>
-          <name>saveConfig</name>
-          <value class="SampleSaveConfiguration">
-            <time>true</time>
-            <latency>true</latency>
-            <timestamp>true</timestamp>
-            <success>true</success>
-            <label>true</label>
-            <code>true</code>
-            <message>true</message>
-            <threadName>true</threadName>
-            <dataType>true</dataType>
-            <encoding>false</encoding>
-            <assertions>true</assertions>
-            <subresults>true</subresults>
-            <responseData>false</responseData>
-            <samplerData>false</samplerData>
-            <xml>true</xml>
-            <fieldNames>false</fieldNames>
-            <responseHeaders>false</responseHeaders>
-            <requestHeaders>false</requestHeaders>
-            <responseDataOnError>false</responseDataOnError>
-            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-            <assertionsResultsToSave>0</assertionsResultsToSave>
-            <bytes>true</bytes>
-          </value>
-        </objProp>
-        <stringProp name="filename"></stringProp>
-      </ResultCollector>
-      <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
-        <boolProp name="ResultCollector.error_logging">false</boolProp>
-        <objProp>
-          <name>saveConfig</name>
-          <value class="SampleSaveConfiguration">
-            <time>true</time>
-            <latency>true</latency>
-            <timestamp>true</timestamp>
-            <success>true</success>
-            <label>true</label>
-            <code>true</code>
-            <message>true</message>
-            <threadName>true</threadName>
-            <dataType>true</dataType>
-            <encoding>false</encoding>
-            <assertions>true</assertions>
-            <subresults>true</subresults>
-            <responseData>false</responseData>
-            <samplerData>false</samplerData>
-            <xml>true</xml>
-            <fieldNames>false</fieldNames>
-            <responseHeaders>false</responseHeaders>
-            <requestHeaders>false</requestHeaders>
-            <responseDataOnError>false</responseDataOnError>
-            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-            <assertionsResultsToSave>0</assertionsResultsToSave>
-            <bytes>true</bytes>
           </value>
         </objProp>
         <stringProp name="filename"></stringProp>
