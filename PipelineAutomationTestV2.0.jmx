@@ -62,7 +62,7 @@
         <boolProp name="resetInterpreter">false</boolProp>
         <stringProp name="parameters"></stringProp>
         <stringProp name="filename"></stringProp>
-        <stringProp name="script">
+        <stringProp name="script">log.info (&quot;Preparing dates&quot;);
 String today = &quot;${__time(MM-dd-yyyy)}&quot;;
 String todayPlus2 = &quot;${__timeShift(MM-dd-yyyy,,P2D,,)}&quot;;
 
