@@ -503,6 +503,15 @@ vars.put(&quot;year&quot;, year);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Log - Activityid and Deal ID" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">String msg = &quot;***** ACTIVITY ID IS: &quot; + vars.get(&quot;activityId&quot;) + &quot; AND THE DEAL ID IS: &quot; + vars.get(&quot;dealId&quot;) + &quot; *****&quot;;
+log.info(msg);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
         </hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="2. ------ Move to Proposal and Submit" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
@@ -4576,8 +4585,8 @@ vars.put(&quot;year&quot;, year);</stringProp>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Closed_UploadPurchaseSaleAgree" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="C:\Users\julian.restrepob\Documents\SettlementStatementdoc.pdf" elementType="HTTPFileArg">
-                    <stringProp name="File.path">C:\Users\julian.restrepob\Documents\SettlementStatementdoc.pdf</stringProp>
+                  <elementProp name="\SettlementStatementdoc.pdf" elementType="HTTPFileArg">
+                    <stringProp name="File.path">\SettlementStatementdoc.pdf</stringProp>
                     <stringProp name="File.paramname">files</stringProp>
                     <stringProp name="File.mimetype">application/pdf</stringProp>
                   </elementProp>
